@@ -27,9 +27,9 @@
 
 <div align="center">
 
-![CLIME Launcher Dashboard](image1.png)
+![CLIME Launcher Dashboard](assets/image1.png)
 
-![CLIME Cosmic Aesthetic](image.png)
+![CLIME Cosmic Aesthetic](assets/image.png)
 
 </div>
 
