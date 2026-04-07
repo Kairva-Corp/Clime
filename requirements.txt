@@ -1,0 +1,3 @@
+textual
+rich
+windows-curses; sys_platform == 'win32'

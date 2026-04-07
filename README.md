@@ -47,10 +47,10 @@
 Ensure you have **Python 3.8+** installed.
 
 ### 2. Install Dependencies
-CLIME requires the `textual` and `rich` libraries. On Windows, `windows-curses` is also needed for the games.
+Install all required libraries using the provided `requirements.txt` file:
 
 ```bash
-pip install textual rich windows-curses
+pip install -r requirements.txt
 ```
 
 ### 3. Clone & Run
