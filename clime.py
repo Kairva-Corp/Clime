@@ -438,16 +438,21 @@ class CLIMEApp(App):
     def action_launch(self) -> None:
         key, name, _desc, mod_name = GAMES[self._selected]
         self.notify(
-            f"Launching [bold]{name}[/bold] …  (ensure {mod_name}.py is present)",
+            f"Launching [bold]{name}[/bold] …  (ensure games/{mod_name}.py is present)",
             title="CLIME",
             severity="information",
         )
         try:
-            sys.path.insert(0, SCRIPT_DIR)
+            # Look in the 'games' sub-directory
+            games_path = os.path.join(SCRIPT_DIR, "games")
+            if games_path not in sys.path:
+                sys.path.insert(0, games_path)
+
             if mod_name in sys.modules:
                 mod = importlib.reload(sys.modules[mod_name])
             else:
                 mod = __import__(mod_name)
+            
             # Suspend Textual, run the curses game, resume
             with self.suspend():
                 if hasattr(mod, "play"):
@@ -456,7 +461,7 @@ class CLIMEApp(App):
                     mod.main()
         except ImportError:
             self.notify(
-                f"[red]{mod_name}.py not found.[/red]  Place it next to clime.py.",
+                f"[red]games/{mod_name}.py not found.[/red]",
                 title="Module missing",
                 severity="error",
             )

@@ -179,7 +179,8 @@ def draw_cosmic_border(win, t):
 def load_words():
     words = []
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    words_path = os.path.join(script_dir, "words.txt")
+    # Go up to root, then into assets/
+    words_path = os.path.join(script_dir, "..", "assets", "words.txt")
     try:
         with open(words_path, "r") as f:
             for line in f:
